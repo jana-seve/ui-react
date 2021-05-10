@@ -1,23 +1,12 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
+  "cli": { "defaultCollection": "@nrwl/react" },
   "defaultProject": "portal",
   "generators": {
     "@nrwl/react": {
-      "application": {
-        "style": "less",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "less"
-      },
-      "library": {
-        "style": "less",
-        "linter": "eslint"
-      }
+      "application": { "style": "less", "linter": "eslint", "babel": true },
+      "component": { "style": "less" },
+      "library": { "style": "less", "linter": "eslint" }
     }
   },
   "projects": {
@@ -68,12 +57,13 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "portal:build"
+            "buildTarget": "portal:build",
+            "host": "0.0.0.0",
+            "ssl": true,
+            "proxyConfig": "apps/portal/proxy.conf.json"
           },
           "configurations": {
-            "production": {
-              "buildTarget": "portal:build:production"
-            }
+            "production": { "buildTarget": "portal:build:production" }
           }
         },
         "lint": {
@@ -105,15 +95,139 @@
             "devServerTarget": "portal:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "portal:serve:production"
-            }
+            "production": { "devServerTarget": "portal:serve:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/portal-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "portal-feature-home": {
+      "root": "libs/portal/feature-home",
+      "sourceRoot": "libs/portal/feature-home/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/portal-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "libs/portal/feature-home/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portal/feature-home"],
+          "options": {
+            "jestConfig": "libs/portal/feature-home/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-utils": {
+      "root": "libs/shared/utils",
+      "sourceRoot": "libs/shared/utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/shared/utils/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/utils"],
+          "options": {
+            "jestConfig": "libs/shared/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "portal-feature-register": {
+      "root": "libs/portal/feature-register",
+      "sourceRoot": "libs/portal/feature-register/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/portal/feature-register/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portal/feature-register"],
+          "options": {
+            "jestConfig": "libs/portal/feature-register/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "portal-ui": {
+      "root": "libs/portal/ui",
+      "sourceRoot": "libs/portal/ui/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/portal/ui/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portal/ui"],
+          "options": {
+            "jestConfig": "libs/portal/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "portal-feature-admin": {
+      "root": "libs/portal/feature-admin",
+      "sourceRoot": "libs/portal/feature-admin/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/portal/feature-admin/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portal/feature-admin"],
+          "options": {
+            "jestConfig": "libs/portal/feature-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "portal-data-access": {
+      "root": "libs/portal/data-access",
+      "sourceRoot": "libs/portal/data-access/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/portal/data-access/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portal/data-access"],
+          "options": {
+            "jestConfig": "libs/portal/data-access/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

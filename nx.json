@@ -1,34 +1,28 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "covid-essentials-portal-react",
+  "affected": { "defaultBase": "master" },
+  "npmScope": "covid-essentials",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "portal": {
-      "tags": []
-    },
-    "portal-e2e": {
-      "tags": [],
-      "implicitDependencies": ["portal"]
-    }
+    "portal": { "tags": [] },
+    "portal-e2e": { "tags": [], "implicitDependencies": ["portal"] },
+    "portal-feature-home": { "tags": [] },
+    "shared-utils": { "tags": [] },
+    "portal-feature-register": { "tags": [] },
+    "portal-ui": { "tags": [] },
+    "portal-feature-admin": { "tags": [] },
+    "portal-data-access": { "tags": [] }
   }
 }

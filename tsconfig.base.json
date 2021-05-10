@@ -14,7 +14,24 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@covid-essentials/portal/feature-home": [
+        "libs/portal/feature-home/src/index.ts"
+      ],
+      "@covid-essentials/shared/utils": ["libs/shared/utils/src/index.ts"],
+      "@covid-essentials/portal/feature-register": [
+        "libs/portal/feature-register/src/index.ts"
+      ],
+      "@covid-essentials/portal/ui": [
+        "libs/portal/ui/src/index.ts"
+      ],
+      "@covid-essentials/portal/feature-admin": [
+        "libs/portal/feature-admin/src/index.ts"
+      ],
+      "@covid-essentials/portal/data-access": [
+        "libs/portal/data-access/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
